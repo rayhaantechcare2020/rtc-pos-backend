@@ -1,5 +1,5 @@
 APP_ENV=production
 APP_DEBUG=false
-APP_URL=https://your-app.onrender.com
+APP_URL=https://rtcpos.onrender.com
 
 # Database will be added via Render dashboard
