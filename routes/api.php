@@ -20,8 +20,9 @@ use App\Http\Controllers\Api\SaleController;
 
 // Public routes
 Route::get('/', function () {
-    return ['RTC_LTD POS App version' => app()->version()];
+    return response()->json(['status' => 'ok']);
 });
+
 
 
 Route::get('/test-connection', function () {
