@@ -9,6 +9,10 @@ class RemovePaymentMethodFromSales extends Migration
     public function up()
     {
         Schema::table('sales', function (Blueprint $table) {
+
+            //Drop foreign key constraints
+            $this->dropForeignKeys($table);
+            
             // Remove old columns if they exist
             if (Schema::hasColumn('sales', 'payment_method')) {
                 $table->dropColumn('payment_method');
@@ -22,6 +26,16 @@ class RemovePaymentMethodFromSales extends Migration
         });
     }
 
+    private function dropForeignKeys($table)
+    {
+        //Drop foreign key constraint for bank_id
+        try{
+            $table->dropForeign(['bank_id']);
+        }catch (\Exception $e)
+        {
+            
+        }
+    }
     public function down()
     {
         Schema::table('sales', function (Blueprint $table) {
