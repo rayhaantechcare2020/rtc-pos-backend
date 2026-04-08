@@ -11,6 +11,8 @@ class CreateBanksTable extends Migration
     {
         Schema::create('banks', function (Blueprint $table) {
             $table->id();
+             $table->unsignedBigInteger('company_id')->nullable()->after('id');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('set null');
             $table->string('name');
             $table->string('account_name');
             $table->string('account_number');

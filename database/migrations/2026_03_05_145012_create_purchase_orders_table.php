@@ -24,10 +24,15 @@ return new class extends Migration
             $table->decimal('discount', 15, 2)->default(0);
             $table->decimal('total', 15, 2)->default(0);
             $table->text('notes')->nullable();
+            $table->string('tracking_number')->nullable();
+            $table->string('waybill_number')->nullable()->after('tracking_number');
+            $table->string('truck_number')->nullable()->after('waybill_number');
             $table->timestamps();
             
             $table->index(['company_id', 'status']);
             $table->index(['company_id', 'vendor_id']);
+            $table->index('waybill_number');
+            $table->index('truck_number');
         });
     }
 

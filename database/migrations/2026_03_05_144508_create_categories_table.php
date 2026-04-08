@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->integer('sort_order')->default(0);
             $table->string('status')->default('active');
+             $table->string('color')->default('#3B82F6')->nullable()->after('image');
             $table->timestamps();
             
             $table->index(['company_id', 'status']);
