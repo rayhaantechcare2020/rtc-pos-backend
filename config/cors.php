@@ -13,6 +13,7 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
+        'http://localhost:8000/api/categories',
         'https://rtc-pos-backend-production.up.railway.app/api',
         'https://rtcpos.netlify.app',
         'http://localhost:5173',  // Add your Vite dev server
