@@ -1,5 +1,5 @@
 APP_ENV=production
 APP_DEBUG=false
-APP_URL=https://rtcpos.onrender.com
+APP_URL=https://rtc-pos-backend-production.up.railway.app/api
 
 # Database will be added via Render dashboard
