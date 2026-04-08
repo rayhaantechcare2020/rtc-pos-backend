@@ -15,6 +15,7 @@ return [
     'allowed_origins' => [
         'https://rtcpos.netlify.app',
         'https://www.rtcpos.netlify.app',
+        'http://0.0.0.0:8080/api',
         'https://localhost:8000/api/categories',
         'https://www.rtc-pos-backend-production.up.railway.app/api',
         'https://localhost:5173',  // Add your Vite dev server
