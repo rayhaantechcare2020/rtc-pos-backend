@@ -181,7 +181,7 @@ private function updateSalePaymentStatus($saleId)
             'customer_id' => $request->customer_id,
             'amount' => $request->amount,
             'payment_method' => $request->method,
-                'sale_id' => $request->sale_id ?? null, // Handle nullable sale_id
+            'sale_id' => $request->sale_id,  // Handle nullable sale_id
             'reference' => $request->reference,
             'payment_date' => $request->date, // Use the date from request
             'notes' => $request->notes,
@@ -224,83 +224,6 @@ private function updateSalePaymentStatus($saleId)
 }
 
 
-
-    //     $validator = Validator::make($request->all(), [
-    //         'customer_id' => 'required|exists:customers,id',
-    //         'sale_id' => 'nullable|exists:sales,id',
-    //         'amount' => 'required|numeric|min:0.01',
-    //         'method' => 'required|in:cash,transfer,pos,cheque',
-    //         'reference' => 'nullable|string|max:255',
-    //         'date' => 'required|date',
-    //         'notes' => 'nullable|string'
-    //     ]);
-
-    //     if ($validator->fails()) {
-    //         return response()->json([
-    //             'success' => false,
-    //             'errors' => $validator->errors()
-    //         ], 422);
-    //     }
-
-    //     //Verify sale if provided
-    //     if($request->sale_id) {
-    //         $sale = Sale::where('company_id', $companyId)
-    //              ->where('customer_id', $request->customer_id)
-    //              ->findofFail($request->sale_id);
-    //     }
-
-    //     try {
-    //         DB::beginTransaction();
-
-    //         $companyId = $request->user()->company_id;
-            
-    //         // Verify customer belongs to company
-    //         $customer = Customer::where('company_id', $companyId)
-    //             ->findOrFail($request->customer_id);
-
-    //         // Create payment
-    //         $payment = Payment::create([
-    //             'company_id' => $companyId,
-    //             'user_id' => $request->user()->id,
-    //             'customer_id' => $request->customer_id,
-    //              'sale_id' => $request->sale_id,
-    //             'amount' => $request->amount,
-    //             'payment_method' => $request->method,
-    //             'reference' => $request->reference,
-    //             'payment_date' => now()->format('Y-m-d'),
-    //             'notes' => $request->notes,
-    //             'status' => 'completed'
-    //         ]);
-
-    //         // Update customer balance (decrease since they're paying)
-    //         $customer->current_balance -= $request->amount;
-    //         $customer->save();
-
-    //         //if payment is linked to a sale, you could also update the sale's paid amount or status here
-    //         if($request->sale_id) {
-    //             $this->updateSalePaymentStatus($sale);
-    //         }
-
-    //         // Create transaction record (optional - if you have transactions table)
-    //         // You can add inventory transaction here if needed
-
-    //         DB::commit();
-
-    //         return response()->json([
-    //             'success' => true,
-    //             'message' => 'Payment recorded successfully',
-    //             'data' => $payment->load(['customer', 'user'])
-    //         ], 201);
-
-    //     } catch (\Exception $e) {
-    //         DB::rollBack();
-    //         return response()->json([
-    //             'success' => false,
-    //             'message' => 'Failed to record payment',
-    //             'error' => $e->getMessage()
-    //         ], 500);
-    //     }
-    // }
 
     // /**
     //  * Get a single payment
